@@ -8,11 +8,11 @@ class ArrayList
   def push value
     @array[@size] = value
     increment_size
-    @array
+    self
   end
 
   def value_at index
-    return unless 0 <= index && index < @size
+    fail ArgumentError, 'index out of bounds' unless 0 <= index && index < @size
     @array[index]
   end
 
