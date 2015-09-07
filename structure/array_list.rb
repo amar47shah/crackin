@@ -1,4 +1,6 @@
 class ArrayList
+  attr_reader :size
+
   def initialize capacity = 1
     @capacity = capacity
     @array = Array.new @capacity
