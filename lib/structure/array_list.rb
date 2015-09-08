@@ -15,11 +15,13 @@ module Structure
     end
 
     def value_at index
-      fail ArgumentError, 'index out of bounds' unless 0 <= index && index < @size
+      fail IndexError unless 0 <= index && index < @size
       @array[index]
     end
 
     private
+
+    attr_reader :capacity
 
     def increment_size
       @size += 1
