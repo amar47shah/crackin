@@ -1,4 +1,5 @@
 require_relative '../test_helper'
+require_relative '../support/runtime_configurable'
 require_relative '../../lib/chapter_01/solution_01'
 
 module Chapter01Tests
@@ -30,43 +31,21 @@ module Chapter01Tests
         namespace.unique_characters? string
       end
 
-      def namespace
-        Chapter01::Solution01.const_get runtime
-      end
-
-      def runtime
-        fail NotImplementedError
+      def problem
+        Chapter01::Solution01
       end
     end
 
-    class QuadraticTest < Minitest::Test
+    class QuadraticTest < RuntimeConfigurable::QuadraticTest
       include Tests
-
-      private
-
-      def runtime
-        'Quadratic'
-      end
     end
 
-    class LinearithmicTest < Minitest::Test
+    class LinearithmicTest < RuntimeConfigurable::LinearithmicTest
       include Tests
-
-      private
-
-      def runtime
-        'Linearithmic'
-      end
     end
 
-    class LinearTest < Minitest::Test
+    class LinearTest < RuntimeConfigurable::LinearTest
       include Tests
-
-      private
-
-      def runtime
-        'Linear'
-      end
     end
 
     class ArrayTest < Minitest::Test
