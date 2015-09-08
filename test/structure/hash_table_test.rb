@@ -5,14 +5,14 @@ class HashTableTest < Minitest::Test
   def test_can_find_after_insert
     hash_table.insert :key, :value
     retrieved =  hash_table.find :key
-    assert_equal retrieved, :value
+    assert_equal :value, retrieved
   end
 
   def test_can_change_value
     hash_table.insert :same, :value
     hash_table.insert :same, :new_value
     retrieved = hash_table.find :same
-    assert_equal retrieved, :new_value
+    assert_equal :new_value, retrieved
   end
 
   def test_can_insert_two_keys
@@ -20,8 +20,8 @@ class HashTableTest < Minitest::Test
     hash_table.insert :second, :another
     first  = hash_table.find :first
     second = hash_table.find :second
-    assert_equal first , :value
-    assert_equal second, :another
+    assert_equal   :value, first
+    assert_equal :another, second
   end
 
   def test_cannot_find_unknown_key
