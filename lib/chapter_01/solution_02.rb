@@ -1,11 +1,18 @@
-module Linearithmic
+module Chapter01
+  module Solution02
+    module Linearithmic; end
+    module Linear; end
+  end
+end
+
+module Chapter01::Solution02::Linearithmic
   def self.permutations? left, right
     return false unless left.length == right.length
     left.chars.sort == right.chars.sort
   end
 end
 
-module Linear
+module Chapter01::Solution02::Linear
   class << self
     def permutations? left, right
       return false unless left.length == right.length

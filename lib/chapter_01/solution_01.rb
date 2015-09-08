@@ -1,4 +1,12 @@
-module Quadratic
+module Chapter01
+  module Solution01
+    module Quadratic; end
+    module Linearithmic; end
+    module Linear; end
+  end
+end
+
+module Chapter01::Solution01::Quadratic
   def self.unique_characters? string
     characters = string.chars
     characters.each_with_index.all? do |c, i|
@@ -7,7 +15,7 @@ module Quadratic
   end
 end
 
-module Linearithmic
+module Chapter01::Solution01::Linearithmic
   def self.unique_characters? string
     characters = string.chars.sort
     characters.each_with_index.all? do |c, i|
@@ -16,7 +24,7 @@ module Linearithmic
   end
 end
 
-module Linear
+module Chapter01::Solution01::Linear
   def self.unique_characters? string
     string.each_char.with_object({}).all? { |c, h| !h[c] and h[c] = true }
   end
