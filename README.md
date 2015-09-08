@@ -1,2 +1,2 @@
 # crackin
-Algorithm practice with *Cracking the Codling Interview*
+Algorithm practice with *Cracking the Coding Interview*
