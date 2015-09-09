@@ -28,10 +28,8 @@ module Chapter01::Solution05::Linear
 
     def one_replacement_away? source, target
       return false unless source.length == target.length
-      replacements = (0...source.length).reduce(0) do |d, i|
-                       d + (source[i] == target[i] ? 0 : 1)
-                     end
-      replacements == 1
+      pairs = source.each_char.zip target.chars
+      pairs.count { |original, replaced| original != replaced } == 1
     end
   end
 end
