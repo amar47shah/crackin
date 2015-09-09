@@ -1,16 +1,16 @@
-module RuntimeConfigurable
+module NamespaceConfigurable
   class Test < Minitest::Test
     private
 
     def namespace
-      problem.const_get runtime
+      problem.const_get module_name
     end
 
     def problem
       fail NotImplementedError
     end
 
-    def runtime
+    def module_name
       fail NotImplementedError
     end
   end
@@ -18,7 +18,7 @@ module RuntimeConfigurable
   class QuadraticTest < Test
     private
 
-    def runtime
+    def module_name
       'Quadratic'
     end
   end
@@ -26,7 +26,7 @@ module RuntimeConfigurable
   class LinearithmicTest < Test
     private
 
-    def runtime
+    def module_name
       'Linearithmic'
     end
   end
@@ -34,7 +34,7 @@ module RuntimeConfigurable
   class LinearTest < Test
     private
 
-    def runtime
+    def module_name
       'Linear'
     end
   end

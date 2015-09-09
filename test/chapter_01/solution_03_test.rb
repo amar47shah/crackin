@@ -1,5 +1,5 @@
 require_relative '../test_helper'
-require_relative '../support/runtime_configurable'
+require_relative '../support/namespace_configurable'
 require_relative '../../lib/chapter_01/solution_03'
 
 module Chapter01Tests
@@ -41,7 +41,7 @@ module Chapter01Tests
       end
     end
 
-    class LinearTest < RuntimeConfigurable::LinearTest
+    class LinearTest < NamespaceConfigurable::LinearTest
       include Tests
     end
   end
