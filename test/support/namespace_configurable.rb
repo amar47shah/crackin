@@ -38,4 +38,20 @@ module NamespaceConfigurable
       'Linear'
     end
   end
+
+  class InPlaceTest < Test
+    private
+
+    def module_name
+      'InPlace'
+    end
+  end
+
+  class OutOfPlaceTest < Test
+    private
+
+    def module_name
+      'OutOfPlace'
+    end
+  end
 end
