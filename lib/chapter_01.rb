@@ -1,6 +1,1 @@
-require 'chapter_01/solution_01'
-require 'chapter_01/solution_02'
-require 'chapter_01/solution_03'
-require 'chapter_01/solution_04'
-require 'chapter_01/solution_05'
-require 'chapter_01/solution_06'
+(1..7).each { |i| require "chapter_01/solution_0#{i}" }
