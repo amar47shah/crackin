@@ -11,7 +11,7 @@ module Chapter01::Solution07::InPlace
     whole_size.step(2, -2) do |ring_size|
       a = (whole_size - ring_size) / 2
       z = (whole_size + ring_size - 2) / 2
-      0.upto(ring_size - 1) do |i|
+      0.upto(ring_size - 2) do |i|
         m[i + a][z], m[z][z - i], m[z - i][a], m[a][i + a] =
         m[a][i + a], m[i + a][z], m[z][z - i], m[z - i][a]
       end
