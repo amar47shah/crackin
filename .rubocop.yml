@@ -1,0 +1,11 @@
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+
+Style/SingleLineBlockParams:
+  Enabled: false
