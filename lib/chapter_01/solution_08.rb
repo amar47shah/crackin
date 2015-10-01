@@ -12,7 +12,7 @@ module Chapter01::Solution08::Version01
     def flow_zeroes matrix
       zero = zero_locations matrix
       zero[:rows].each { |row| matrix[row].fill(0) }
-      zero[:columns].each { |column| matrix.each { |row| row[column] = 0 } }
+      zero[:cols].each { |col| matrix.each { |row| row[col] = 0 } }
       matrix
     end
 
@@ -21,17 +21,17 @@ module Chapter01::Solution08::Version01
     def zero_locations matrix
       n, m = matrix.size, matrix.first.size
       zero_vectors =
-        (0...n).reduce([[false] * n, [false] * m]) do |(row_zero, column_zero), i|
+        (0...n).reduce([[false] * n, [false] * m]) do |(row_zero, col_zero), i|
           (0...m).each do |j|
             next unless matrix[i][j].zero?
-            row_zero[i]    = true
-            column_zero[j] = true
+            row_zero[i] = true
+            col_zero[j] = true
           end
-          [row_zero, column_zero]
+          [row_zero, col_zero]
         end
       zero_indexes =
         zero_vectors.map { |v| v.map.with_index.select(&:first).map(&:last) }
-      Hash[%i(rows columns).zip zero_indexes]
+      Hash[%i(rows cols).zip zero_indexes]
     end
   end
 end
