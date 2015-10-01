@@ -15,9 +15,8 @@ module NamespaceConfigurable
     end
   end
 
-  QuadraticTest    = Class.new Test
-  LinearithmicTest = Class.new Test
-  LinearTest       = Class.new Test
-  InPlaceTest      = Class.new Test
-  OutOfPlaceTest   = Class.new Test
+  %w(
+    Quadratic Linearithmic Linear
+    InPlace OutOfPlace
+  ).each { |k| const_set "#{k}Test", Class.new(Test) }
 end
