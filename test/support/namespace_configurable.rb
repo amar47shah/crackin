@@ -11,47 +11,13 @@ module NamespaceConfigurable
     end
 
     def module_name
-      fail NotImplementedError
+      self.class.to_s.split('::').last.sub('Test', '')
     end
   end
 
-  class QuadraticTest < Test
-    private
-
-    def module_name
-      'Quadratic'
-    end
-  end
-
-  class LinearithmicTest < Test
-    private
-
-    def module_name
-      'Linearithmic'
-    end
-  end
-
-  class LinearTest < Test
-    private
-
-    def module_name
-      'Linear'
-    end
-  end
-
-  class InPlaceTest < Test
-    private
-
-    def module_name
-      'InPlace'
-    end
-  end
-
-  class OutOfPlaceTest < Test
-    private
-
-    def module_name
-      'OutOfPlace'
-    end
-  end
+  QuadraticTest    = Class.new Test
+  LinearithmicTest = Class.new Test
+  LinearTest       = Class.new Test
+  InPlaceTest      = Class.new Test
+  OutOfPlaceTest   = Class.new Test
 end
