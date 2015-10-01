@@ -52,7 +52,7 @@ module Chapter01Tests
       end
     end
 
-    class InPlaceTest < NamespaceConfigurable::InPlaceTest
+    class InPlaceTest < NamespaceConfigurable::Test
       include Tests
 
       def test_same_object
@@ -62,7 +62,7 @@ module Chapter01Tests
       end
     end
 
-    class OutOfPlaceTest < NamespaceConfigurable::OutOfPlaceTest
+    class OutOfPlaceTest < NamespaceConfigurable::Test
       include Tests
 
       def test_different_object

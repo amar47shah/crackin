@@ -36,15 +36,15 @@ module Chapter01Tests
       end
     end
 
-    class QuadraticTest < NamespaceConfigurable::QuadraticTest
+    class QuadraticTest < NamespaceConfigurable::Test
       include Tests
     end
 
-    class LinearithmicTest < NamespaceConfigurable::LinearithmicTest
+    class LinearithmicTest < NamespaceConfigurable::Test
       include Tests
     end
 
-    class LinearTest < NamespaceConfigurable::LinearTest
+    class LinearTest < NamespaceConfigurable::Test
       include Tests
     end
 

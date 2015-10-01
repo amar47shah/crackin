@@ -40,11 +40,11 @@ module Chapter01Tests
       end
     end
 
-    class LinearithmicTest < NamespaceConfigurable::LinearithmicTest
+    class LinearithmicTest < NamespaceConfigurable::Test
       include Tests
     end
 
-    class LinearTest < NamespaceConfigurable::LinearTest
+    class LinearTest < NamespaceConfigurable::Test
       include Tests
     end
   end

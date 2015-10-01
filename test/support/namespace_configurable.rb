@@ -14,9 +14,4 @@ module NamespaceConfigurable
       self.class.to_s.split('::').last.sub('Test', '')
     end
   end
-
-  %w(
-    Quadratic Linearithmic Linear
-    InPlace OutOfPlace
-  ).each { |k| const_set "#{k}Test", Class.new(Test) }
 end

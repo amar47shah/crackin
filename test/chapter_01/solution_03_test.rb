@@ -41,7 +41,7 @@ module Chapter01Tests
       end
     end
 
-    class LinearTest < NamespaceConfigurable::LinearTest
+    class LinearTest < NamespaceConfigurable::Test
       include Tests
     end
   end
