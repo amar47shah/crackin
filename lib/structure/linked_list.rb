@@ -5,7 +5,7 @@ module Structure
     def [] index
       fail IndexError, 'negative index' if index < 0
       fail IndexError, 'list empty'     if empty?
-      index.times.reduce(@head) do |pointer, _|
+      index.times.reduce @head do |pointer, _|
         pointer.next or fail IndexError, 'too large'
       end.data
     end
@@ -17,7 +17,7 @@ module Structure
     def index data
       pointer = @head
       counter = 0
-      while pointer && pointer.data != data do
+      until pointer.nil? || pointer.data == data do
         pointer = pointer.next
         counter += 1
       end
@@ -25,7 +25,7 @@ module Structure
     end
 
     def insert data
-      @head = Node.new(data, @head)
+      @head = Node.new data, @head
       self
     end
 
