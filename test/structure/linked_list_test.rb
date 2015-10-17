@@ -22,6 +22,25 @@ class LinkedListTest < Minitest::Test
     assert_equal :first, linked_list[1]
   end
 
+  def test_access_negative_index
+    assert_raises(IndexError) { linked_list[-1] }
+  end
+
+  def test_access_head_empty_list
+    assert_nil linked_list.head
+    assert_raises(IndexError) { linked_list[0] }
+  end
+
+  def test_access_one_too_large
+    insert :value
+    assert_raises(IndexError) { linked_list[1] }
+  end
+
+  def test_access_two_too_large
+    insert :value
+    assert_raises(IndexError) { linked_list[2] }
+  end
+
   def test_index_after_insert
     insert :value
     index = linked_list.index :value

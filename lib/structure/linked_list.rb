@@ -2,16 +2,16 @@ module Structure
   class LinkedList
     Node = Struct.new :data, :next
 
-    def head
-      @head && @head.data
-    end
-
     def [] index
       fail IndexError, 'negative index' if index < 0
+      fail IndexError, 'list empty'     if empty?
       index.times.reduce(@head) do |pointer, _|
-        fail IndexError, 'index too large' unless pointer
-        pointer.next
+        pointer.next or fail IndexError, 'too large'
       end.data
+    end
+
+    def head
+      @head && @head.data
     end
 
     def index data
@@ -27,6 +27,12 @@ module Structure
     def insert data
       @head = Node.new(data, @head)
       self
+    end
+
+    private
+
+    def empty?
+      @head.nil?
     end
   end
 end
