@@ -42,9 +42,8 @@ module Structure
 
     def pop
       check_empty_list
-      data = @head.data
-      @head = @head.next
-      data
+      old, @head = @head, @head.next
+      old.data
     end
 
     private
