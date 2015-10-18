@@ -26,6 +26,7 @@ module Chapter01Tests
       end
 
       def test_rotated_4x4
+        # rubocop:disable Style/SpaceInsideBrackets, Style/ExtraSpacing
         assert_rotated [[13,  9,  5,  1],
                         [14, 10,  6,  2],
                         [15, 11,  7,  3],
@@ -34,6 +35,7 @@ module Chapter01Tests
                         [ 5,  6,  7,  8],
                         [ 9, 10, 11, 12],
                         [13, 14, 15, 16]]
+        # rubocop:enable Style/SpaceInsideBrackets, Style/ExtraSpacing
       end
 
       private

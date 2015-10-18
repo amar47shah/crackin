@@ -16,11 +16,11 @@ class HashTableTest < Minitest::Test
   end
 
   def test_can_insert_two_keys
-    hash_table.insert :first , :value
+    hash_table.insert :first, :value
     hash_table.insert :second, :another
     first  = hash_table.find :first
     second = hash_table.find :second
-    assert_equal   :value, first
+    assert_equal :value, first
     assert_equal :another, second
   end
 

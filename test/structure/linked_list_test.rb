@@ -100,9 +100,9 @@ class LinkedListTest < Minitest::Test
 
   def test_pop_successively
     insert :first, :second, :third
-    assert_equal :third , linked_list.pop
+    assert_equal :third, linked_list.pop
     assert_equal :second, linked_list.pop
-    assert_equal :first , linked_list.pop
+    assert_equal :first, linked_list.pop
   end
 
   private

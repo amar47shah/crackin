@@ -1,3 +1,6 @@
+Style/AndOr:
+  EnforcedStyle: conditionals
+
 Style/ClassAndModuleChildren:
   Enabled: false
 

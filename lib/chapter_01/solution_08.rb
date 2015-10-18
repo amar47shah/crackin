@@ -6,7 +6,6 @@ module Chapter01
   end
 end
 
-
 module Chapter01::Solution08::Version01
   class << self
     def flow_zeroes matrix
@@ -18,8 +17,10 @@ module Chapter01::Solution08::Version01
 
     private
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def zero_locations matrix
-      n, m = matrix.size, matrix.first.size
+      n = matrix.size
+      m = matrix.first.size
       zero_vectors =
         (0...n).reduce([[false] * n, [false] * m]) do |(row_zero, col_zero), i|
           (0...m).each do |j|
@@ -34,27 +35,29 @@ module Chapter01::Solution08::Version01
       Hash[%i(rows cols).zip zero_indexes]
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 end
 
 module Chapter01::Solution08::Version02
   def self.flow_zeroes matrix
-    matrix.reduce({}) do |columns, row|
+    columns = matrix.each_with_object({}) do |row, zero_columns|
       zero_indexes = row.map.with_index.select { |n, _| n.zero? }.map(&:last)
-      zero_indexes.each { |c| columns[c] = :zero }
+      zero_indexes.each { |c| zero_columns[c] = :zero }
       row.fill(0) unless zero_indexes.empty?
-      columns
-    end.keys.each { |column| matrix.each { |row| row[column] = 0 } }
+    end
+    columns.keys.each { |column| matrix.each { |row| row[column] = 0 } }
     matrix
   end
 end
 
 module Chapter01::Solution08::Version03
   def self.flow_zeroes matrix
-    matrix.reduce([]) do |zero_columns, row|
+    columns = matrix.reduce [] do |zero_columns, row|
       zero_indexes = row.map.with_index.select { |n, _| n.zero? }.map(&:last)
       row.fill(0) unless zero_indexes.empty?
       zero_columns + zero_indexes
-    end.uniq.each { |column| matrix.each { |row| row[column] = 0 } }
+    end
+    columns.uniq.each { |column| matrix.each { |row| row[column] = 0 } }
     matrix
   end
 end

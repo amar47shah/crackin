@@ -6,6 +6,7 @@ module Chapter01
 end
 
 module Chapter01::Solution07::InPlace
+  # rubocop:disable Metrics/AbcSize
   def self.rotate m
     whole_size = m.size
     whole_size.step(2, -2) do |ring_size|
@@ -18,6 +19,7 @@ module Chapter01::Solution07::InPlace
     end
     m
   end
+  # rubocop:enable Metrics/AbcSize
 end
 
 module Chapter01::Solution07::OutOfPlace

@@ -30,6 +30,7 @@ module Chapter01Tests
                       [[1, 2, 3], [4, 0, 6], [7, 8, 9]]
       end
 
+      # rubocop:disable Metrics/MethodLength
       def test_flowed_8x5
         assert_flowed(
           [[0, 0, 0, 0, 0],
@@ -50,6 +51,7 @@ module Chapter01Tests
            [0, 1, 0, 0, 0]]
         )
       end
+      # rubocop:enable Metrics/MethodLength
 
       private
 

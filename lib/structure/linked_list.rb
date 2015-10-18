@@ -28,7 +28,7 @@ module Structure
     def index data
       pointer = @head
       counter = 0
-      until pointer.nil? || pointer.data == data do
+      until pointer.nil? || pointer.data == data
         pointer = pointer.next
         counter += 1
       end
@@ -49,7 +49,7 @@ module Structure
     private
 
     def check_empty_list
-      empty?    and fail IndexError, 'list empty'
+      empty? and fail IndexError, 'list empty'
     end
 
     def check_negative index

@@ -10,7 +10,7 @@ module Chapter01::Solution01::Quadratic
   def self.unique_characters? string
     characters = string.chars
     characters.each_with_index.all? do |c, i|
-      not (0...i).any? { |j| characters[j] == c }
+      !(0...i).any? { |j| characters[j] == c }
     end
   end
 end
@@ -19,7 +19,7 @@ module Chapter01::Solution01::Linearithmic
   def self.unique_characters? string
     characters = string.chars.sort
     characters.each_with_index.all? do |c, i|
-      not characters.binary_search? c, max: i - 1
+      !characters.binary_search? c, max: i - 1
     end
   end
 end

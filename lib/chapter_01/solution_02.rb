@@ -24,7 +24,7 @@ module Chapter01::Solution02::Linear
     private
 
     def character_counts string
-      string.chars.reduce(Hash.new 0) { |counts, c| counts[c] += 1 ; counts }
+      string.chars.each_with_object(Hash.new 0) { |c, counts| counts[c] += 1 }
     end
   end
 end

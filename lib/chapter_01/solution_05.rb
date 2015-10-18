@@ -19,10 +19,10 @@ module Chapter01::Solution05::Linear
 
     def one_insertion_away? source, target
       return false unless target.length - source.length == 1
-      insertions = (0...source.length).reduce(0) do |d, i|
-                     break d if d > 1
-                     d + (source[i] == target[i + d] ? 0 : 1)
-                   end
+      insertions = (0...source.length).reduce(0) do |distance, index|
+        break distance if distance > 1
+        distance + (source[index] == target[index + distance] ? 0 : 1)
+      end
       insertions == 1
     end
 
