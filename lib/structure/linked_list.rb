@@ -3,28 +3,18 @@ module Structure
     Node = Struct.new :data, :next
 
     def [] index
-      fail IndexError, 'negative'   if index < 0
-      fail IndexError, 'list empty' if empty?
-      index.times.reduce @head do |pointer, _|
-        pointer.next or fail IndexError, 'too large'
-      end.data
+      check_negative index
+      check_empty_list
+      node = node_at index
+      node.data
     end
 
     def delete index
-      fail IndexError, 'negative'   if index < 0
-      fail IndexError, 'list empty' if empty?
-      if index == 0
-        data = @head.data
-        @head = @head.next
-        return data
-      end
-      previous = (index - 1).times.reduce @head do |pointer, _|
-        pointer.next or fail IndexError, 'too large'
-      end
-      fail IndexError, 'too large' unless previous.next
-      data = previous.next.data
-      previous.next = previous.next.next
-      data
+      check_negative index
+      check_empty_list
+      return pop if index.zero?
+      previous = node_at index - 1
+      snip_after previous
     end
 
     def empty?
@@ -48,6 +38,37 @@ module Structure
     def insert data
       @head = Node.new data, @head
       self
+    end
+
+    private
+
+    def check_empty_list
+      empty?    and fail IndexError, 'list empty'
+    end
+
+    def check_negative index
+      index < 0 and fail IndexError, 'negative'
+    end
+
+    def fail_out_of_bounds
+      fail IndexError, 'too large'
+    end
+
+    def node_at index
+      index.times.reduce(@head) { |node, _| node.next or fail_out_of_bounds }
+    end
+
+    def pop
+      data = @head.data
+      @head = @head.next
+      data
+    end
+
+    def snip_after node
+      fail_out_of_bounds unless node.next
+      data = node.next.data
+      node.next = node.next.next
+      data
     end
   end
 end
