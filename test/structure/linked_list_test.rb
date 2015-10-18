@@ -92,6 +92,19 @@ class LinkedListTest < Minitest::Test
     assert_message(/empty/, error)
   end
 
+  def test_pop_removes
+    insert :value
+    assert_equal :value, linked_list.pop
+    assert_nil linked_list.index :value
+  end
+
+  def test_pop_successively
+    insert :first, :second, :third
+    assert_equal :third , linked_list.pop
+    assert_equal :second, linked_list.pop
+    assert_equal :first , linked_list.pop
+  end
+
   private
 
   def assert_message matcher, error

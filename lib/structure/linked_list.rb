@@ -40,6 +40,12 @@ module Structure
       self
     end
 
+    def pop
+      data = @head.data
+      @head = @head.next
+      data
+    end
+
     private
 
     def check_empty_list
@@ -56,12 +62,6 @@ module Structure
 
     def node_at index
       index.times.reduce(@head) { |node, _| node.next or fail_out_of_bounds }
-    end
-
-    def pop
-      data = @head.data
-      @head = @head.next
-      data
     end
 
     def snip_after node
