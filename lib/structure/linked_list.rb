@@ -3,11 +3,32 @@ module Structure
     Node = Struct.new :data, :next
 
     def [] index
-      fail IndexError, 'negative index' if index < 0
-      fail IndexError, 'list empty'     if empty?
+      fail IndexError, 'negative'   if index < 0
+      fail IndexError, 'list empty' if empty?
       index.times.reduce @head do |pointer, _|
         pointer.next or fail IndexError, 'too large'
       end.data
+    end
+
+    def delete index
+      fail IndexError, 'negative'   if index < 0
+      fail IndexError, 'list empty' if empty?
+      if index == 0
+        data = @head.data
+        @head = @head.next
+        return data
+      end
+      previous = (index - 1).times.reduce @head do |pointer, _|
+        pointer.next or fail IndexError, 'too large'
+      end
+      fail IndexError, 'too large' unless previous.next
+      data = previous.next.data
+      previous.next = previous.next.next
+      data
+    end
+
+    def empty?
+      @head.nil?
     end
 
     def head
@@ -27,12 +48,6 @@ module Structure
     def insert data
       @head = Node.new data, @head
       self
-    end
-
-    private
-
-    def empty?
-      @head.nil?
     end
   end
 end

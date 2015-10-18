@@ -53,6 +53,38 @@ class LinkedListTest < Minitest::Test
     assert_equal 1, index
   end
 
+  def test_delete_head
+    insert :value
+    deleted = linked_list.delete 0
+    assert_equal :value, deleted
+    assert linked_list.empty?
+  end
+
+  def test_delete_last
+    insert :first, :second
+    deleted = linked_list.delete 1
+    assert_equal :first, deleted
+    assert_nil linked_list.index :first
+  end
+
+  def test_delete_middle
+    insert :first, :second, :third
+    deleted = linked_list.delete 1
+    assert_equal :second, deleted
+    assert_equal :third, linked_list[0]
+    assert_equal :first, linked_list[1]
+  end
+
+  def test_delete_index_out_of_bounds
+    insert :value
+    assert_raises(IndexError) { linked_list.delete(-1) }
+    assert_raises(IndexError) { linked_list.delete(1) }
+  end
+
+  def test_delete_from_empty
+    assert_raises(IndexError) { linked_list.delete 0 }
+  end
+
   private
 
   def insert *args
