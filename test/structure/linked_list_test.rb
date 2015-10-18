@@ -23,22 +23,26 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_access_negative_index
-    assert_raises(IndexError) { linked_list[-1] }
+    error = assert_raises(IndexError) { linked_list[-1] }
+    assert_message(/negative/, error)
   end
 
   def test_access_head_empty_list
     assert_nil linked_list.head
-    assert_raises(IndexError) { linked_list[0] }
+    error = assert_raises(IndexError) { linked_list[0] }
+    assert_message(/empty/, error)
   end
 
   def test_access_one_too_large
     insert :value
-    assert_raises(IndexError) { linked_list[1] }
+    error = assert_raises(IndexError) { linked_list[1] }
+    assert_message(/large/, error)
   end
 
   def test_access_two_too_large
     insert :value
-    assert_raises(IndexError) { linked_list[2] }
+    error = assert_raises(IndexError) { linked_list[2] }
+    assert_message(/large/, error)
   end
 
   def test_index_after_insert
@@ -77,15 +81,22 @@ class LinkedListTest < Minitest::Test
 
   def test_delete_index_out_of_bounds
     insert :value
-    assert_raises(IndexError) { linked_list.delete(-1) }
-    assert_raises(IndexError) { linked_list.delete(1) }
+    error_negative = assert_raises(IndexError) { linked_list.delete(-1) }
+    error_large    = assert_raises(IndexError) { linked_list.delete(1) }
+    assert_message(/negative/, error_negative)
+    assert_message(/large/, error_large)
   end
 
   def test_delete_from_empty
-    assert_raises(IndexError) { linked_list.delete 0 }
+    error = assert_raises(IndexError) { linked_list.delete 0 }
+    assert_message(/empty/, error)
   end
 
   private
+
+  def assert_message matcher, error
+    assert_match matcher, error.message
+  end
 
   def insert *args
     args.each { |a| linked_list.insert a }
