@@ -22,7 +22,7 @@ module Structure
     end
 
     def head
-      @head && @head.data
+      @head.data unless empty?
     end
 
     def index data
@@ -65,10 +65,9 @@ module Structure
     end
 
     def snip_after node
-      fail_out_of_bounds unless node.next
-      data = node.next.data
-      node.next = node.next.next
-      data
+      after = node.next or fail_out_of_bounds
+      node.next = after.next
+      after.data
     end
   end
 end
