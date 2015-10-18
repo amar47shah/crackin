@@ -1,6 +1,7 @@
 require_relative '../test_helper'
 require_relative '../../lib/structure/linked_list'
 
+# rubocop:disable Metrics/ClassLength
 class LinkedListTest < Minitest::Test
   def test_at_head_after_insert
     insert :value
@@ -105,6 +106,12 @@ class LinkedListTest < Minitest::Test
     assert_equal :first, linked_list.pop
   end
 
+  def test_pop_empty_fails
+    assert linked_list.empty?
+    error = assert_raises(IndexError) { linked_list.pop }
+    assert_message(/empty/, error)
+  end
+
   private
 
   def assert_message matcher, error
@@ -119,3 +126,4 @@ class LinkedListTest < Minitest::Test
     @linked_list ||= Structure::LinkedList.new
   end
 end
+# rubocop:enable Metrics/ClassLength
