@@ -12,7 +12,7 @@ module Structure
     end
 
     def to_s
-      (0...@strings.size).reduce('') { |s, i| s << @strings.value_at(i) }
+      @strings.size.times.with_object('') { |i, s| s << @strings.value_at(i) }
     end
   end
 end

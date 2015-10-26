@@ -31,13 +31,13 @@ module Chapter01::Solution07::OutOfPlace
     private
 
     def transpose matrix
-      (0...matrix.size).reduce([]) do |transpose, column|
+      matrix.size.times.with_object [] do |column, transpose|
         transpose << matrix.flat_map { |row| row[column] }
       end
     end
 
     def reflect_horizontal matrix
-      matrix.reduce([]) { |reflection, row| reflection << row.reverse }
+      matrix.map(&:reverse)
     end
   end
 end

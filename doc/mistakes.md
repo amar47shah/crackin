@@ -14,3 +14,12 @@ Mistakes in Handwritten Code
 
 17/10/14 - `Structure::LinkedList#pop`
 - did not handle case when list empty
+
+
+Mistakes in Refactoring
+---
+
+26/10/14 - `Chapter01::Solution05::Linear#one_insertion_away`
+- NoMethodError: undefined method `each_with_index` for String
+  * string is not Enumerable
+  * use `each_char.with_index`

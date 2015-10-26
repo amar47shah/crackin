@@ -22,13 +22,12 @@ module Chapter01::Solution08::Version01
       n = matrix.size
       m = matrix.first.size
       zero_vectors =
-        (0...n).reduce([[false] * n, [false] * m]) do |(row_zero, col_zero), i|
-          (0...m).each do |j|
+        n.times.with_object([[false] * n, [false] * m]) do |i, (r_zero, c_zero)|
+          m.times do |j|
             next unless matrix[i][j].zero?
-            row_zero[i] = true
-            col_zero[j] = true
+            r_zero[i] = true
+            c_zero[j] = true
           end
-          [row_zero, col_zero]
         end
       zero_indexes =
         zero_vectors.map { |v| v.map.with_index.select(&:first).map(&:last) }

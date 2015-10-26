@@ -19,9 +19,9 @@ module Chapter01::Solution05::Linear
 
     def one_insertion_away? source, target
       return false unless target.length - source.length == 1
-      insertions = (0...source.length).reduce(0) do |distance, index|
+      insertions = source.each_char.with_index.reduce(0) do |distance, (c, i)|
         break distance if distance > 1
-        distance + (source[index] == target[index + distance] ? 0 : 1)
+        distance + (c == target[i + distance] ? 0 : 1)
       end
       insertions == 1
     end

@@ -9,9 +9,7 @@ end
 module Chapter01::Solution01::Quadratic
   def self.unique_characters? string
     characters = string.chars
-    characters.each_with_index.all? do |c, i|
-      !(0...i).any? { |j| characters[j] == c }
-    end
+    characters.all? { |c| characters.count { |cc| cc == c } == 1 }
   end
 end
 
