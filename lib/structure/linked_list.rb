@@ -9,7 +9,7 @@ module Structure
       node.data
     end
 
-    def delete index
+    def delete_at index
       check_negative index
       check_empty_list
       return pop if index.zero?
@@ -35,15 +35,15 @@ module Structure
       pointer && counter
     end
 
-    def insert data
-      @head = Node.new data, @head
-      self
-    end
-
     def pop
       check_empty_list
       old, @head = @head, @head.next
       old.data
+    end
+
+    def push data
+      @head = Node.new data, @head
+      self
     end
 
     private
