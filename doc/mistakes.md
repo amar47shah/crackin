@@ -15,6 +15,11 @@ Mistakes in Handwritten Code
 17/10/14 - `Structure::LinkedList#pop`
 - did not handle case when list empty
 
+10/11/14 - `Structure::LinkedList#each`
+- coded implementation of `#reverse_map` instead of `#each`
+- passed node, instead of node.data, to yield
+- used `LinkedList.new` instead of `self.class.new`
+
 
 Mistakes in Refactoring
 ---
