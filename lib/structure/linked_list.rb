@@ -17,6 +17,16 @@ module Structure
       snip_after previous
     end
 
+    def each
+      return enum_for unless block_given?
+      pointer = @head
+      until pointer.nil?
+        yield pointer.data
+        pointer = pointer.next
+      end
+      self
+    end
+
     def empty?
       @head.nil?
     end

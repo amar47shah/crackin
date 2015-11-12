@@ -112,6 +112,27 @@ class LinkedListTest < Minitest::Test
     assert_message :empty, error
   end
 
+  def test_each_length_one
+    push :value
+    mock.expect :call, true, %i(value)
+    linked_list.each { |v| mock.call v }
+    mock.verify
+  end
+
+  def test_each_length_three
+    push :first, :second, :third
+    %i(third second first).each { |arg| mock.expect :call, true, [arg] }
+    linked_list.each { |v| mock.call v }
+    mock.verify
+  end
+
+  def test_each_enumerator
+    push :value
+    mock.expect :call, true, %i(value)
+    linked_list.each.each { |v| mock.call v }
+    mock.verify
+  end
+
   private
 
   def assert_message word, error
@@ -120,6 +141,10 @@ class LinkedListTest < Minitest::Test
 
   def linked_list
     @linked_list ||= Structure::LinkedList.new
+  end
+
+  def mock
+    @mock ||= Minitest::Mock.new
   end
 
   def push *args
