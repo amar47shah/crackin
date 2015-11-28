@@ -13,7 +13,7 @@ module Chapter02::Solution01::Linear
       found = { head => true }
       previous = @head
       while current = previous.next
-        found[current.data] and next snip_after previous
+        next snip_after previous if found[current.data]
         found[current.data] = true
         previous = current
       end
