@@ -26,7 +26,6 @@ end
 module Chapter02::Solution01::Quadratic
   class UniqueList < Structure::LinkedList
     def remove_duplicates
-      return self if empty?
       start = @head
       while start
         value = start.data
