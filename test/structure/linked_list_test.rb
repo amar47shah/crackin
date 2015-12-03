@@ -133,6 +133,11 @@ class LinkedListTest < Minitest::Test
     mock.verify
   end
 
+  def test_enumerable
+    ancestors = Structure::LinkedList.ancestors
+    assert_includes ancestors, Enumerable
+  end
+
   private
 
   def assert_message word, error

@@ -1,5 +1,7 @@
 module Structure
   class LinkedList
+    include Enumerable
+
     Node = Struct.new :data, :next
 
     def [] index
