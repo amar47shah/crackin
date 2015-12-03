@@ -1,2 +1,1 @@
-require 'chapter_02/solution_01'
-require 'chapter_02/solution_02'
+(1..3).each { |i| require "chapter_02/solution_0#{i}" }
