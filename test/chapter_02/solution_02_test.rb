@@ -61,4 +61,3 @@ module Chapter02Tests
     end
   end
 end
-

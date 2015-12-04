@@ -28,10 +28,9 @@ module Chapter02::Solution01::Quadratic
     def remove_duplicates
       start = @head
       while start
-        value = start.data
         previous = start
         while current = previous.next
-          next snip_after previous if current.data == value
+          next snip_after previous if current.data == start.data
           previous = current
         end
         start = start.next
