@@ -9,7 +9,7 @@ $ bundle install
 
 ## Run Tests
 ```
-$ rake
+$ bundle exec rake
 ```
 
 ## Open Console
