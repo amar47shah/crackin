@@ -12,6 +12,11 @@ $ bundle install
 $ bundle exec rake
 ```
 
+## Run Linter
+```
+$ bundle exec rubocop
+```
+
 ## Open Console
 ```
 $ bin/console
